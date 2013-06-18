@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The future of web app development with components | WDCNZ 2013</title>
+  <script src="polymer/polymer.js"></script>
+  <link rel="import" href="components/x-slideshow/x-slideshow.html" />
+</head>
+<body>
+<x-slideshow>
+  <x-slide>
+    # Encapsulate the web
+
+    ## Ryan Seddon
+  </x-slide>
+
+  <x-slide>
+    # ME
+
+    * [@ryanseddon](https://twitter.com/ryanseddon)
+    * [thecssninja.com](http://www.thecssninja.com/)
+    * [Modernizr](http://modernizr.com/)
+    * [SEEK](http://seek.com.au/)
+  </x-slide>
+
+  <x-slide>
+    # Web Components, what are they
+
+    * Allow authors to compose re-usable "widgets"
+  </x-slide>
+
+  <x-slide>
+    # Using a UI widget today
+
+    1. Get widget source
+    2. Include in page. May require CSS, JavaScript and Some initialisation code
+    3. Check to make sure it hasn't broken anything
+    4. Fix broken things
+  </x-slide>
+
+  <x-slide>
+    # The future Web Component way
+
+    1. Import component
+    2. Use on page
+
+    ```html
+    <x-slideshow>
+      <x-slide>
+        Contents
+      </x-slide>
+    </x-slideshow>
+    ```
+  </x-slide>
+
+  <x-slide>
+    # Web Components is the umbrella term
+
+    * Custom Elements
+    * Shadow DOM
+    * Templates
+    * Imports
+    * Decorators
+  </x-slide>
+
+  <x-slide>
+    # What problems do they solve
+
+    * Encapsulation - like iframes without the baggage
+    * Modularisation
+    * Easy solution powerful mechanism for other developers to use, see source of slides.
+  </x-slide>
+
+  <x-slide>
+    # Examples
+
+    * This slide deck is a series of components
+    * &lt;x-mardown /&gt;
+    * &lt;x-slideshow /&gt;
+    * &lt;x-slide /&gt; which extends &lt;x-mardown /&gt;
+    * &lt;syntax-highlight /&gt;
+  </x-slide>
+
+  <x-slide>
+    # Component lifecycle
+
+    * Registering on page load `document.register()`
+    * registering on createElement `document.createElement('x-markdown')`
+    * as constructor e.g. `new XMarkdown()`
+  </x-slide>
+
+  <x-slide>
+    # Custom Elements
+
+    * Extending existing elements
+    * creating new ones
+  </x-slide>
+
+  <x-slide>
+    # Shadow DOM
+
+    * Where the encapsulation happens
+    * Browser vendors have had this functionality for a long time
+    * Gives markup and style encapsulation safe from 3rd parties
+  </x-slide>
+
+  <x-slide>
+    # Templates
+
+    * Inert chunk of DOM
+    * Allows you to nicely create a template that the component will use
+    * Won't become active until it's injected into an element
+  </x-slide>
+
+  <x-slide>
+    # Imports
+
+    * How a component is included in the document
+  </x-slide>
+
+  <x-slide>
+    # Decorators
+
+    * Enhance or override the the presentation of an exisiting element
+    * Applied via CSS decorator: url(#idname)
+    * Unlike a custom element with a shadow DOM applied the shadow DOM in a decorator is never accessible via script.
+  </x-slide>
+
+  <x-slide>
+    # Polymer
+
+    ## Handy polyfills + extra layer on top
+
+    * Wraps up web components into nice library
+    * Handling events
+    * Model Driven Views (MDV) think Angular.js but native
+    * Much more
+  </x-slide>
+
+  <x-slide>
+    # Thanks
+
+    * Slides: [thecssninja.com/talks/wdcnz13](http://www.thecssninja.com/talks/wdcnz13)
+    * Polymer: [polymer-project.org](http://polymer-project.org/)
+  </x-slide>
+
+</x-slideshow>
+</body>
+</html>
