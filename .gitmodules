@@ -1,6 +1,9 @@
-[submodule "components/x-markdown"]
-        path = components/x-markdown
-        url = git@github.com:ryanseddon/markdown-component.git
 [submodule "polymer"]
         path = polymer
         url = git@github.com:Polymer/polymer.git
+r/polymer.git
+mponents/x-slideshow"]
+x-slideshow"]
+ components/x-slideshow
+s/x-slideshow
+https://github.com/ryanseddon/slideshow-component
