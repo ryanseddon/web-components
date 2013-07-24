@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>The future of web app development with components | WDCNZ 2013</title>
+  <title>The future of web app development with web components | WDCNZ 2013</title>
+  <link rel="stylesheet" href="styles/styles.css" />
   <script src="polymer/polymer.js"></script>
   <link rel="import" href="components/x-slideshow/x-slideshow.html" />
 </head>
 <body>
 <x-slideshow>
   <x-slide>
-    # Encapsulate the web
+    # The future with web components
 
     ## Ryan Seddon
   </x-slide>
@@ -26,108 +27,445 @@
   <x-slide>
     # Web Components, what are they
 
-    * Allow authors to compose re-usable "widgets"
+    * Allow authors to compose re-usable "components"
+
+    <pre><code> &lt;foo-bar&gt;&lt;/foo-bar&gt;</code></pre>
   </x-slide>
 
   <x-slide>
-    # Using a UI widget today
-
-    1. Get widget source
-    2. Include in page. May require CSS, JavaScript and Some initialisation code
-    3. Check to make sure it hasn't broken anything
-    4. Fix broken things
-  </x-slide>
-
-  <x-slide>
-    # The future Web Component way
-
-    1. Import component
-    2. Use on page
-
-    ```html
-    <x-slideshow>
-      <x-slide>
-        Contents
-      </x-slide>
-    </x-slideshow>
-    ```
-  </x-slide>
-
-  <x-slide>
-    # Web Components is the umbrella term
+    # Umbrella term
 
     * Custom Elements
     * Shadow DOM
     * Templates
     * Imports
-    * Decorators
+    * Decorators<sup>1</sup>
+
+    <sup>1</sup> Not talking about this
   </x-slide>
 
   <x-slide>
-    # What problems do they solve
+    # What do they solve?
 
-    * Encapsulation - like iframes without the baggage
+    * Encapsulation - iframe without baggage
     * Modularisation
-    * Easy solution powerful mechanism for other developers to use, see source of slides.
+    * Easy to use
+  </x-slide>
+
+  <x-slide>
+    # Using a "*component*" today
+
+    1. Get jQuery UI widget
+    1. Include in page. May require CSS, JavaScript
+    1. Initialise widget through setup code
+    1. Check to make sure it hasn't broken anything
+    1. Fix broken things
+  </x-slide>
+
+  <x-slide>
+    ![](images/kevin-rose-throws-raccoon.gif)
+
+    Makes you wanna endless throw racoons down a stairwell.
+  </x-slide>
+
+  <x-slide>
+    # The future
+
+    1. Import component
+    1. Use on page
+
+    <pre></code>
+    &lt;link rel=&quot;import&quot; href=&quot;x-markdown.html&quot; /&gt;
+
+    &lt;x-markdown&gt;&lt;/x-markdown&gt;
+    </code></pre>
   </x-slide>
 
   <x-slide>
     # Examples
 
     * This slide deck is a series of components
-    * &lt;x-mardown /&gt;
-    * &lt;x-slideshow /&gt;
-    * &lt;x-slide /&gt; which extends &lt;x-mardown /&gt;
-    * &lt;syntax-highlight /&gt;
+    * x-markdown
+    * x-slideshow
+    * x-slide which extends x-markdown
   </x-slide>
 
   <x-slide>
-    # Component lifecycle
+    # Important
 
-    * Registering on page load `document.register()`
-    * registering on createElement `document.createElement('x-markdown')`
-    * as constructor e.g. `new XMarkdown()`
+    ## All demos use the [Polymer polyfills](http://www.polymer-project.org/)
+
+    * Things will change, fast
+    * I'll try to keep the slides up-to-date
   </x-slide>
 
   <x-slide>
     # Custom Elements
 
     * Extending existing elements
-    * creating new ones
+    * Creating new ones
+  </x-slide>
+
+  <x-slide>
+    # Create custom element
+    <pre class="codepen" data-height="300" data-type="html" data-href="Ifuoq" data-user="ryanseddon" data-safe="true"><code>&lt;element name=&quot;x-reverse&quot;&gt;
+
+    &lt;/element&gt;
+
+    &lt;x-reverse&gt;
+      I put my thing down, flip it and reverse it.
+    &lt;/x-reverse&gt;</code><a href="http://codepen.io/ryanseddon/pen/Ifuoq">Check out this Pen!</a></pre>
+    <script async src="http://codepen.io/assets/embed/ei.js"></script>
+  </x-slide>
+
+  <x-slide>
+    # Custom Element Registration
+
+    * Element definition `this.register()`
+    * `document.register()`
+  </x-slide>
+
+  <x-slide>
+    # Registering
+
+    <pre class="codepen" data-height="300" data-type="html" data-href="AymCx" data-user="ryanseddon" data-safe="true"><code>&lt;element name=&quot;x-reverse&quot;&gt;
+      &lt;script&gt;
+        if (this !== window) {
+           this.register({
+             prototype: {
+               readyCallback: function() {
+                 this.textContent = this.textContent.split('').reverse().join('');
+               }
+             }
+           });
+         }
+      &lt;/script&gt;
+    &lt;/element&gt;
+
+    &lt;x-reverse&gt;
+      I put my thing down, flip it and reverse it.
+    &lt;/x-reverse&gt;</code><a href="http://codepen.io/ryanseddon/pen/AymCx">Check out this Pen!</a></pre>
+    <script async src="http://codepen.io/assets/embed/ei.js"></script>
+  </x-slide>
+
+  <x-slide>
+    # document.register()
+
+    <pre class="codepen" data-height="300" data-type="js" data-href="EvFxp" data-user="ryanseddon" data-safe="true"><code>var btn = document.querySelector(&quot;button&quot;);
+
+    function register() {
+      var proto = Object.create(HTMLElement.prototype);
+
+      proto.readyCallback = function() {
+        this.textContent = this.textContent.split('').reverse().join('');
+      };
+
+      document.register('x-reverse', { prototype: proto });
+    }
+
+    btn.addEventListener(&quot;click&quot;, function() {
+      register();
+    }, false);</code><a href="http://codepen.io/ryanseddon/pen/EvFxp">Check out this Pen!</a></pre>
+    <script async src="http://codepen.io/assets/embed/ei.js"></script>
+  </x-slide>
+
+  <x-slide>
+    # Using Custom Element
+
+    * `document.createElement('x-reverse')`
+    * `new XReverse()`
+  </x-slide>
+
+  <x-slide>
+    # createElement()
+
+    <pre class="codepen" data-height="300" data-type="js" data-href="lvBDs" data-user="ryanseddon" data-safe="true"><code>var body = document.body,
+        btn = document.querySelector(&quot;#unreverse&quot;),
+        elem = document.createElement('x-reverse');
+
+    elem.textContent = &quot;Palindromes are awesome, level, racecar and best of all tacocat&quot;;
+
+    body.insertBefore(elem, btn);
+
+    btn.addEventListener(&quot;click&quot;, function() {
+      elem.unreverse();
+    }, false);</code><a href="http://codepen.io/ryanseddon/pen/lvBDs">Check out this Pen!</a></pre>
+    <script async src="http://codepen.io/assets/embed/ei.js"></script>
+  </x-slide>
+
+  <x-slide>
+    # Custom Element Recap
+
+    * Element element
+    * this.register & document.register
+    * Is a real DOM element
+    * Browser support Firefox & Chrome nightlies &mdash; unstable.
   </x-slide>
 
   <x-slide>
     # Shadow DOM
 
     * Where the encapsulation happens
-    * Browser vendors have had this functionality for a long time
-    * Gives markup and style encapsulation safe from 3rd parties
+    * Browser vendors have had this
+    * Gives markup and style encapsulation
+    * Enormous amount of info
+  </x-slide>
+
+  <x-slide>
+    # Shadow DOM
+
+    <pre class="codepen" data-height="300" data-type="result" data-href="dmexs" data-user="ryanseddon" data-safe="true"><code></code><a href="http://codepen.io/ryanseddon/pen/dmexs">Check out this Pen!</a></pre>
+    <script async src="http://codepen.io/assets/embed/ei.js"></script>
+  </x-slide>
+
+  <x-slide>
+    # Preserving content
+
+    <pre class="codepen" data-height="300" data-type="js" data-href="yBhCu" data-user="ryanseddon" data-safe="true"><code>var btn = document.querySelector(&quot;.btn&quot;);
+
+    var shadow = btn.createShadowRoot();
+
+    shadow.innerHTML = &quot;&lt;h1&gt;Shadow DOM in the house!&lt;/h1&gt;&lt;content&gt;&lt;/content&gt;&quot;;</code><a href="http://codepen.io/ryanseddon/pen/yBhCu">Check out this Pen!</a></pre>
+    <script async src="http://codepen.io/assets/embed/ei.js"></script>
+  </x-slide>
+
+  <x-slide>
+    # Distributing content
+
+    <pre class="codepen" data-height="300" data-type="js" data-href="rgIaD" data-user="ryanseddon" data-safe="true"><code>var btn = document.querySelector(&quot;.content&quot;);
+
+    var shadow = btn.createShadowRoot();
+
+
+    shadow.innerHTML = &quot;&lt;content select='.hello'&gt;&lt;/content&gt;, &lt;content select='.world'&gt;&lt;/content&gt;&quot;;</code><a href="http://codepen.io/ryanseddon/pen/rgIaD">Check out this Pen!</a></pre>
+    <script async src="http://codepen.io/assets/embed/ei.js"></script>
+  </x-slide>
+
+  <x-slide>
+    # Styling the Shadow DOM
+
+    * style tag inside Shadow DOM
+    * @host<sup>1</sup> soon to be ::host
+    * pseudo attribute<sup>1</sup> soon to be ::part()
+    * ::distributed()<sup>1</sup> soon to be ::content
+
+    <sup>1</sup> Note: These are changing
+  </x-slide>
+
+  <x-slide>
+    # Styling overload
+
+    <pre class="codepen" data-height="300" data-type="css" data-href="Iqych" data-user="ryanseddon" data-safe="true"><code>/* User styles through custom pseudo elements */
+    .slider::x-superslider-handle {
+      color: green;
+    }
+
+
+    /*
+     * Easier to read shadow dom styles
+     * @host changing to ::host
+     */
+    @host {
+      div {
+        position: relative;
+        font-size: 10px;
+        width: 600px;
+      }
+    }
+
+    /*
+     * ::distributed() changing to ::content
+     * content::content img {}
+     */
+    content::-webkit-distributed(img) {
+      max-width: 100%;
+      opacity: 0.5;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+    .slides {
+      position: relative;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .slide {
+      display: inline-block;
+    }
+    .controls div {
+      font-size: 50px;
+      position: absolute; top: 50%;
+      left: 1rem;
+      background: rgba(0,0,0,0.5);
+      padding: 0.5rem;
+      line-height: 1;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+
+    controls div:last-child {
+      left: auto;
+      right: 1rem;
+    }</code><a href="http://codepen.io/ryanseddon/pen/Iqych">Check out this Pen!</a></pre>
+    <script async src="http://codepen.io/assets/embed/ei.js"></script>
+  </x-slide>
+
+  <x-slide>
+    # Recap!
+
+    * @host: reach outside Shadow DOM
+    * psuedo: reach inside Shadow DOM
+    * ::distributed: style distributed elements
+    * Browser support: Chrome only ATM.
+  </x-slide>
+
+  <x-slide>
+    # Overwhelmed
+
+    **A lot** to take in
+
+    ![](images/overwhelmed.gif)
   </x-slide>
 
   <x-slide>
     # Templates
 
     * Inert chunk of DOM
-    * Allows you to nicely create a template that the component will use
-    * Won't become active until it's injected into an element
+    * Not quite native handlebars
+    * Activates on DOM injection
+  </x-slide>
+
+  <x-slide>
+    # Simple Demo
+
+    <pre class="codepen" data-height="300" data-type="html" data-href="KlGgH" data-user="ryanseddon" data-safe="true"><code>&lt;template id=&quot;trolololo&quot;&gt;
+      &lt;div class=&quot;container&quot;&gt;
+        &lt;h1&gt;Trolololo&lt;/h1&gt;
+        &lt;img src=&quot;http://stream1.gifsoup.com/view/201665/trololo-o.gif&quot; /&gt;
+      &lt;/div&gt;
+    &lt;/template&gt;
+
+    &lt;button class=&quot;trolololo&quot;&gt;Activate LOLs&lt;/button&gt;</code><a href="http://codepen.io/ryanseddon/pen/KlGgH">Check out this Pen!</a></pre>
+    <script async src="http://codepen.io/assets/embed/ei.js"></script>
+  </x-slide>
+
+  <x-slide>
+    # Templates, Custom Elements & Shadow DOM
+
+    <pre class="codepen" data-height="300" data-type="html" data-href="CiaEA" data-user="ryanseddon" data-safe="true"><code>&lt;element name=&quot;x-reverse&quot;&gt;
+      &lt;template&gt;
+        &lt;style&gt;
+          .container {
+            padding: 10px;
+            border: 1px solid #eee;
+          }
+          h1 {
+            color: red;
+          }
+        &lt;/style&gt;
+        &lt;div class=&quot;container&quot;&gt;
+          &lt;h1&gt;&lt;content&gt;&lt;/content&gt;&lt;/h1&gt;
+        &lt;/div&gt;
+      &lt;/template&gt;
+      &lt;script&gt;
+        if (this !== window) {
+          var tpl = this.querySelector('template');
+          this.register({
+             prototype: {
+               readyCallback: function() {
+                  this.createShadowRoot().appendChild(tpl.content.cloneNode(true));
+                  this.textContent = this.textContent.split('').reverse().join('');
+               }
+             }
+           });
+         }
+      &lt;/script&gt;
+    &lt;/element&gt;
+
+    &lt;x-reverse&gt;
+      I put my thing down, flip it and reverse it.
+    &lt;/x-reverse&gt;</code><a href="http://codepen.io/ryanseddon/pen/CiaEA">Check out this Pen!</a></pre>
+    <script async src="http://codepen.io/assets/embed/ei.js"></script>
   </x-slide>
 
   <x-slide>
     # Imports
 
     * How a component is included in the document
+    * Checkout slide deck source code
   </x-slide>
 
   <x-slide>
+    # Performance
+
+    * That's a lot of http requests you go there
+    * Performance is a key agenda
+    * Multiple elements can be defined
+    * Build process
+    * Defer loading
+  </x-slide>
+
+  <!-- <x-slide>
     # Decorators
 
     * Enhance or override the the presentation of an exisiting element
     * Applied via CSS decorator: url(#idname)
-    * Unlike a custom element with a shadow DOM applied the shadow DOM in a decorator is never accessible via script.
+    * Applies shadow DOM and logic
+    * No browser support, yet!
   </x-slide>
 
   <x-slide>
-    # Polymer
+    # Important
+
+    ## Decorators are pseudo code only
+
+    So all of what I just said could be way off
+  </x-slide>
+
+  <x-slide>
+    # Decorator example, maybe
+
+    <pre class="codepen" data-height="300" data-type="css" data-href="Enzea" data-user="ryanseddon" data-safe="true"><code>/* Yep it's that easy */
+    .decorate {
+      decorator: url(#slideshow);
+    }</code><a href="http://codepen.io/ryanseddon/pen/Enzea">Check out this Pen!</a></pre>
+    <script async src="http://codepen.io/assets/embed/ei.js"></script>
+  </x-slide> -->
+
+  <x-slide>
+    # Extend the Web Forward
+
+    * Low level APIs
+    * Developers can experiment without standards body slowness
+    * Libraries can be built around low level APIs
+    * [The Manifesto](http://extensiblewebmanifesto.org/)
+  </x-slide>
+
+  <x-slide>
+    # RWD picture element
+
+    * RWD and retina displays require different images
+    * picture element proposal
+    * end up with srcset, lolwat?
+  </x-slide>
+
+  <x-slide>
+    # &lt;x-picture /&gt;
+
+    <pre class="codepen" data-height="300" data-type="html" data-href="IgKzu" data-user="ryanseddon" data-safe="true"><code>&lt;x-picture alt=&quot;A giant stone face at The Bayon temple in Angkor Thom, Cambodia&quot;&gt;
+      &lt;pic-src src=&quot;https://raw.github.com/ryanseddon/picture-component/master/example/imgs/small.jpg&quot;  media=&quot;(min-width: 200px)&quot;&gt;&lt;/pic-src&gt;
+      &lt;pic-src src=&quot;https://raw.github.com/ryanseddon/picture-component/master/example/imgs/medium.jpg&quot; media=&quot;(min-width: 400px)&quot;&gt;&lt;/pic-src&gt;
+      &lt;pic-src src=&quot;https://raw.github.com/ryanseddon/picture-component/master/example/imgs/large.jpg&quot;  media=&quot;(min-width: 800px)&quot;&gt;&lt;/pic-src&gt;
+    &lt;/x-picture&gt;</code><a href="http://codepen.io/ryanseddon/pen/IgKzu">Check out this Pen!</a></pre>
+    <script async src="http://codepen.io/assets/embed/ei.js"></script>
+
+    [Github repo](https://github.com/ryanseddon/picture-component/)
+  </x-slide>
+
+  <x-slide>
+    # [Polymer](http://polymer-project.org/)
 
     ## Handy polyfills + extra layer on top
 
@@ -138,10 +476,26 @@
   </x-slide>
 
   <x-slide>
+    # [X-Tag](http://www.x-tags.org/)
+
+    ## Polyfill just for Custom Elements
+
+    * Great examples
+    * Created registry for custom components
+  </x-slide>
+
+  <x-slide>
+    # They acknolwedge each other
+
+    ## Hopefully they work together on a common solution
+  </x-slide>
+
+  <x-slide>
     # Thanks
 
-    * Slides: [thecssninja.com/talks/wdcnz13](http://www.thecssninja.com/talks/wdcnz13)
+    * Slides: [ryanseddon.github.io/web-components](https://ryanseddon.github.io/web-components)
     * Polymer: [polymer-project.org](http://polymer-project.org/)
+    * X-Tag: [x-tags.org](http://www.x-tags.org/)
   </x-slide>
 
 </x-slideshow>
