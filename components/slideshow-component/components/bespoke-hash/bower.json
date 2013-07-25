@@ -1,0 +1,20 @@
+{
+  "name": "bespoke-hash",
+  "version": "0.1.1",
+  "main": "./dist/bespoke-hash.min.js",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "bespoke.js": "0.2.1"
+  },
+  "gitHead": "681f195768b93aa44536d2c50b3dfbc234dabe25",
+  "readme": "[![Build Status](https://secure.travis-ci.org/markdalgleish/bespoke-hash.png)](http://travis-ci.org/markdalgleish/bespoke-hash)\n\n# bespoke-hash\n\n### Hash Routing for [Bespoke.js](https://github.com/markdalgleish/bespoke.js)\n\nAutomatically generate hash routes for your Bespoke.js presentation slides.\n\n## Download\n\nDownload the [production version][min] or the [development version][max].\n\n[min]: https://raw.github.com/markdalgleish/bespoke-hash/master/dist/bespoke-hash.min.js\n[max]: https://raw.github.com/markdalgleish/bespoke-hash/master/dist/bespoke-hash.js\n\n## Usage\n\nFirst, include both `bespoke.js` and `bespoke-hash.js` in your page.\n\nThen, simply include the plugin when using the `from(selector[, plugins])` method.\n\n```js\nbespoke.horizontal.from(selector, {\n  hash: true\n});\n```\nStarting from `#1`, all routes are numbered by default.\n\n### Named Routes\n\nIf you'd like to use named hash routes instead, add `data-bespoke-hash` attributes to your slide markup.\n\n```html\n<article>\n  <section data-bespoke-hash=\"catchy-title\"></section>\n  <section data-bespoke-hash=\"shameless-plug\"></section>\n  <section data-bespoke-hash=\"controversial-statement\"></section>\n  <section data-bespoke-hash=\"explanation-of-controversial-statement\"></section>\n  <section data-bespoke-hash=\"shameless-self-promotion\"></section>\n</article>\n```\n\n*Note: Named and unnamed routes can be used simultaneously.*\n\n## Questions?\n\nContact me on GitHub or Twitter: [@markdalgleish](http://twitter.com/markdalgleish)\n\n## License\n\nCopyright 2013, Mark Dalgleish  \nThis content is released under the MIT license  \nhttp://markdalgleish.mit-license.org",
+  "readmeFilename": "README.md",
+  "_id": "bespoke-hash@0.1.1",
+  "description": "[![Build Status](https://secure.travis-ci.org/markdalgleish/bespoke-hash.png)](http://travis-ci.org/markdalgleish/bespoke-hash)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/markdalgleish/bespoke-hash.git"
+  }
+}

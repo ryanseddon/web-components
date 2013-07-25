@@ -1,0 +1,20 @@
+{
+  "name": "bespoke-state",
+  "version": "0.2.1",
+  "main": "./dist/bespoke-state.min.js",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "bespoke.js": "0.2.1"
+  },
+  "gitHead": "a5b92e1e206a8308c9b9639cbe0bda5c64706f0e",
+  "readme": "[![Build Status](https://secure.travis-ci.org/markdalgleish/bespoke-state.png)](http://travis-ci.org/markdalgleish/bespoke-state)\n\n# bespoke-state\n\n### Slide-Specific Deck Styles for [Bespoke.js](https://github.com/markdalgleish/bespoke.js)\n\nStyle your entire deck differently based on the active slide.\n\nClasses specified in `data-bespoke-state` attributes will be added to the deck's parent element when the slide is activated.\n\n## Download\n\nDownload the [production version][min] or the [development version][max].\n\n[min]: https://raw.github.com/markdalgleish/bespoke-state/master/dist/bespoke-state.min.js\n[max]: https://raw.github.com/markdalgleish/bespoke-state/master/dist/bespoke-state.js\n\n## Usage\n\nFirst, include both `bespoke.js` and `bespoke-state.js` in your page.\n\nThen, simply include the plugin when creating your deck with the `from()` function.\n\n```js\nbespoke.horizontal.from(selector, {\n  state: true\n});\n```\n\nFinally, add `data-bespoke-state` attributes to your slides.\n\n```html\n<article>\n  <section>\n    Regular deck style\n  </section>\n  <section data-bespoke-state=\"special\">\n    Special deck style\n  </section>\n  <section data-bespoke-state=\"super special\">\n    Super special deck style\n  </section>\n  <section>\n    Regular deck style\n  </section>\n</article>\n```\n\n## Questions?\n\nContact me on GitHub or Twitter: [@markdalgleish](http://twitter.com/markdalgleish)\n\n## License\n\nCopyright 2013, Mark Dalgleish  \nThis content is released under the MIT license  \nhttp://markdalgleish.mit-license.org",
+  "readmeFilename": "README.md",
+  "_id": "bespoke-state@0.2.1",
+  "description": "[![Build Status](https://secure.travis-ci.org/markdalgleish/bespoke-state.png)](http://travis-ci.org/markdalgleish/bespoke-state)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/markdalgleish/bespoke-state.git"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "bespoke-bullets",
+  "version": "0.2.0",
+  "main": "./dist/bespoke-bullets.min.js",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "bespoke.js": "~0.2.1"
+  },
+  "gitHead": "c8f784031551c32411a5d3c936a97787ac2bab93",
+  "readme": "[![Build Status](https://secure.travis-ci.org/markdalgleish/bespoke-bullets.png)](http://travis-ci.org/markdalgleish/bespoke-bullets)\n\n# bespoke-bullets\n\n### Bullet Lists for [Bespoke.js](https://github.com/markdalgleish/bespoke.js)\n\nStyle and animate bullet lists and their transitions with some simple CSS rules.\n\n## Download\n\nDownload the [production version][min] or the [development version][max].\n\n[min]: https://raw.github.com/markdalgleish/bespoke-bullets/master/dist/bespoke-bullets.min.js\n[max]: https://raw.github.com/markdalgleish/bespoke-bullets/master/dist/bespoke-bullets.js\n\n### Bower\n\nBespoke-bullets can be installed from [Bower](http://twitter.github.com/bower/) using the following command:\n\n```bash\n$ bower install bespoke-bullets\n```\n\n## Basic Usage\n\nFirst, include both `bespoke.js` and `bespoke-bullets.js` in your page.\n\nThen, simply include the plugin and specify a selector when using the `from(selector[, plugins])` method.\n\nFor example, let's assume we have the following slide markup:\n\n```html\n<article>\n  <section>\n    <ul>\n      <li>Bullet 1</li>\n      <li>Bullet 2</li>\n      <li>Bullet 3</li>\n    </ul>\n  </section>\n</article>\n```\n\nThese bullets would be initialised like so:\n\n```js\nbespoke.horizontal.from('article', {\n  bullets: 'li'\n});\n```\n\nYou can now style your bullets and their animations by using the provided classes.\n\n### CSS\n\nThe following classes are available on your bullet elements.\n\n<table>\n   <tr>\n    <td><b>bespoke-bullet</b></td>\n    <td>Every bullet element</td>\n   </tr>\n   <tr>\n    <td><b>bespoke-bullet-active</b></td>\n    <td>All active bullets</td>\n   </tr>\n   <tr>\n    <td><b>bespoke-bullet-inactive</b></td>\n    <td>All inactive bullets</td>\n   </tr>\n</table>\n\n### Data Atrributes\n\nThe default behaviour, when the option value is `true`, is to look for elements with `data-bespoke-bullet` attributes:\n\nFor example:\n\n```js\nbespoke.horizontal.from('article', {\n  bullets: true\n});\n```\n\n```html\n<article>\n  <section>\n    <h1 data-bespoke-bullet>Slide Title</h1>\n    <ul>\n      <li data-bespoke-bullet>Bullet 1</li>\n      <li data-bespoke-bullet>Bullet 2</li>\n      <li data-bespoke-bullet>Bullet 3</li>\n    </ul>\n  </section>\n</article>\n```\n\n## Questions?\n\nContact me on GitHub or Twitter: [@markdalgleish](http://twitter.com/markdalgleish)\n\n## License\n\nCopyright 2013, Mark Dalgleish  \nThis content is released under the MIT license  \nhttp://markdalgleish.mit-license.org",
+  "readmeFilename": "README.md",
+  "_id": "bespoke-bullets@0.2.0",
+  "description": "[![Build Status](https://secure.travis-ci.org/markdalgleish/bespoke-bullets.png)](http://travis-ci.org/markdalgleish/bespoke-bullets)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/markdalgleish/bespoke-bullets.git"
+  }
+}

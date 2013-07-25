@@ -1,0 +1,74 @@
+<link rel="import" href="x-markdown/x-markdown.html" />
+<element name="x-slide" extends="x-markdown">
+  <style polymer-scope="global">
+    @import url(http://fonts.googleapis.com/css?family=Montserrat:700);
+
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+  </style>
+  <template>
+    <style>
+      @host {
+        x-slide {
+          font-family: "Open Sans", sans-serif;
+          font-size: 30px;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          opacity: 0;
+          background: #1f978d;
+          -webkit-transition: opacity 0.5s ease;
+          transition: opacity 0.5s ease;
+          color: #eee;
+        }
+        .bespoke-active {
+          opacity: 1;
+          z-index: 1;
+        }
+      }
+      .x-slide__content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        max-height: 90%;
+        max-width: 80%;
+        width: 80%;
+        padding: 1rem;
+        text-align: center;
+        -webkit-transform: translate3d(-50%, -50%, 0);
+        transform: translate3d(-50%, -50%, 0);
+        -moz-box-sizing: border-box;
+        box-sizing: border-box
+      }
+      content::-webkit-distributed(ul),
+      content::-webkit-distributed(ol) {
+        text-align: left;
+        display: inline-block;
+        margin: 0 0 15px;
+      }
+      content::-webkit-distributed(pre) {
+        text-align: left;
+        display: block;
+        background: #000;
+        padding: 20px;
+      }
+      content::-webkit-distributed(h1) {
+        margin: 0 0 20px;
+      }
+      content::-webkit-distributed(a) {
+        color: #343838;
+      }
+      content::-webkit-distributed(.bespoke-bullet-inactive) {
+        opacity: 0;
+      }
+      content::-webkit-distributed(.bespoke-bullet-active) {
+        opacity: 1;
+      }
+    </style>
+    <div class="x-slide__content"><content></content></div>
+  </template>
+  <script>
+    Polymer.register(this);
+  </script>
+</element>

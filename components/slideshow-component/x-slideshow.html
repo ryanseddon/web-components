@@ -1,0 +1,53 @@
+<script src="components/bespoke.js/dist/bespoke.min.js"></script>
+<script src="components/bespoke-hash/dist/bespoke-hash.min.js"></script>
+<script src="components/bespoke-bullets/dist/bespoke-bullets.min.js"></script>
+<script src="components/bespoke-state/dist/bespoke-state.min.js"></script>
+<link rel="import" href="x-slide.html" />
+<element name="x-slideshow">
+  <template>
+    <style>
+      .x-slideshow__controls {
+        position: absolute;
+        z-index: 1;
+        width: 100px;
+        bottom: 20px;
+        right: 20px;
+        text-align: justify;
+      }
+      .x-slideshow__controls:after {
+        content: "";
+        display: inline-block;
+        width: 100%;
+      }
+      .x-slideshow__control {
+        font-size: 30px;
+        line-height: 1;
+        display: inline-block;
+        color: #eee;
+        cursor: pointer;
+      }
+    </style>
+    <content></content>
+    <div class="x-slideshow__controls">
+      <span on-click="prevSlide" class="x-slideshow__control">&#9664;</span>
+      <span on-click="nextSlide" class="x-slideshow__control">&#9654;</span>
+    </div>
+  </template>
+  <script>
+    Polymer.register(this, {
+      ready: function() {
+        bespoke.horizontal.from('x-slideshow', {
+          hash: true,
+          state: true,
+          bullets: 'li'
+        });
+      },
+      prevSlide: function(event) {
+        bespoke.prev();
+      },
+      nextSlide: function(event) {
+        bespoke.next();
+      }
+    });
+  </script>
+</element>
