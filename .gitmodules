@@ -1,9 +1,6 @@
 [submodule "polymer"]
-        path = polymer
-        url = git@github.com:Polymer/polymer.git
-r/polymer.git
-mponents/x-slideshow"]
-x-slideshow"]
- components/x-slideshow
-s/x-slideshow
-https://github.com/ryanseddon/slideshow-component
+    path = polymer
+    url = git@github.com:Polymer/polymer.git
+[submodule "x-slideshow"]
+	path = components/x-slideshow
+	url = git@github.com:ryanseddon/slideshow-component.git
