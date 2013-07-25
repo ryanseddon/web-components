@@ -1,0 +1,28 @@
+<script src="scripts/showdown.min.js"></script>
+<element name="x-markdown">
+  <template>
+    <div class="markdown">
+      <content></content>
+    </div>
+  </template>
+  <script>
+    Polymer.register(this, {
+      ready: function() {
+        var showdown = new Showdown.converter();
+        var text = this.normaliseString(this.innerHTML);
+        var markdown = showdown.makeHtml(text);
+
+        this.innerHTML = markdown;
+      },
+      // Remove all leading/trailing whitespace so it's not confused as 
+      // a code block
+      normaliseString: function(string) {
+        var markdown = string.split('\n').map(function(x){
+          return x.trim();
+        }).join('\n');
+
+        return markdown;
+      }
+    });
+  </script>
+</element>
