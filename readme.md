@@ -1,3 +1,5 @@
+This is woefully out of date and in no way will it be updated.
+
 # Web Components talk
 
 The future of web development is through low level APIs that offer developers flexibility and granular control. Web Components are a part of this movement and offer great control over truly encapsulation "widgets".
